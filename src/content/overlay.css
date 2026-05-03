@@ -1,0 +1,277 @@
+:host {
+  all: initial;
+  display: block;
+}
+
+/* ── Backdrop ── */
+.bb-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 250ms ease-in;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.bb-backdrop.visible {
+  opacity: 1;
+}
+
+/* Sleep mode: softer dim, slower fade */
+.bb-backdrop.bb-sleep {
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 600ms ease-in;
+}
+
+/* ── Card ── */
+.bb-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 36px 32px 28px;
+  max-width: 380px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* ── Exit button ── */
+.bb-exit {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #bbb;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.bb-exit:hover { color: #555; }
+.bb-exit.hidden { display: none; }
+
+/* ── Pacer wrap ── */
+.bb-pacer-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bb-aura-svg {
+  position: absolute;
+  inset: 0;
+  width: 140px;
+  height: 140px;
+  overflow: visible;
+}
+
+.bb-aura {
+  fill: rgba(108, 99, 255, 0.18);
+  transition: r 80ms linear;
+}
+
+.bb-mascot {
+  width: 96px;
+  height: 96px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  transition: transform 120ms ease;
+}
+
+.bb-mascot:hover { transform: scale(1.06); }
+
+.bb-mascot-name {
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  margin-top: 2px;
+  letter-spacing: 0.03em;
+}
+
+@keyframes bb-pet {
+  0%   { transform: scale(1.06) rotate(0deg); }
+  25%  { transform: scale(1.12) rotate(-8deg); }
+  50%  { transform: scale(1.12) rotate(8deg); }
+  75%  { transform: scale(1.08) rotate(-4deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.bb-mascot.bb-petting {
+  animation: bb-pet 400ms ease forwards;
+  cursor: default;
+}
+
+/* Heart burst that appears on pet */
+.bb-pet-heart {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  pointer-events: none;
+  animation: bb-heart-float 700ms ease forwards;
+}
+
+@keyframes bb-heart-float {
+  0%   { opacity: 1; transform: translateX(-50%) translateY(0) scale(0.8); }
+  60%  { opacity: 1; transform: translateX(-50%) translateY(-24px) scale(1.2); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-40px) scale(1); }
+}
+
+.bb-counter {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #6c63ff;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* ── Phase label ── */
+.bb-phase-label {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: 0.03em;
+  text-align: center;
+  min-height: 36px;
+}
+
+/* ── Progress bar ── */
+.bb-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: #eee;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bb-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #6c63ff;
+  border-radius: 999px;
+  transition: width 200ms linear;
+}
+
+/* ── Post-session ── */
+.bb-post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.bb-post.hidden { display: none; }
+
+.bb-post-msg {
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+}
+
+.bb-mood-row {
+  display: flex;
+  gap: 10px;
+}
+
+.bb-mood-btn {
+  font-size: 26px;
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 120ms, transform 120ms;
+}
+
+.bb-mood-btn:hover { transform: scale(1.15); }
+.bb-mood-btn.selected { border-color: #6c63ff; }
+
+/* ── Buttons ── */
+.bb-btn {
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: 2px solid #ddd;
+  background: transparent;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 150ms, border-color 150ms;
+}
+.bb-btn:hover { background: #f5f5f5; }
+
+.bb-btn-primary {
+  background: #6c63ff;
+  color: #fff;
+  border-color: #6c63ff;
+}
+.bb-btn-primary:hover { background: #5a52e0; border-color: #5a52e0; }
+
+/* ── Skip prompt ── */
+.bb-skip-msg {
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+}
+
+.bb-skip-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ── Toast ── */
+.bb-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 2147483647;
+  opacity: 0;
+  transition: opacity 300ms;
+  white-space: nowrap;
+}
+.bb-toast.visible { opacity: 1; }
+
+/* ── Reduced-motion overrides ── */
+@media (prefers-reduced-motion: reduce) {
+  .bb-backdrop { transition: none; }
+  .bb-aura { transition: none; }
+  .bb-progress-fill { transition: none; }
+  .bb-aura-svg { display: none; }
+  .bb-counter { font-size: 28px; font-weight: 700; bottom: auto; right: auto; position: static; color: #6c63ff; }
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+  .bb-card { background: #1e1e2e; }
+  .bb-phase-label { color: #e0e0f0; }
+  .bb-post-msg, .bb-skip-msg { color: #aaa; }
+  .bb-progress-bar { background: #333; }
+  .bb-exit { color: #666; }
+  .bb-exit:hover { color: #ccc; }
+}

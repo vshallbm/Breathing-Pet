@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breath Break — Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Breath Break Settings</h1>
+      <p class="subtitle">Private by default. All data stays on your device.</p>
+    </header>
+
+    <section>
+      <h2>Frequency</h2>
+      <label>
+        Ramp preset
+        <select id="ramp-preset">
+          <option value="slow">Take it slow (1/day for first week)</option>
+          <option value="adaptive" selected>Adapt to me</option>
+          <option value="ready">I'm ready (every 25 min)</option>
+        </select>
+      </label>
+    </section>
+
+    <section>
+      <h2>Sites</h2>
+      <label class="toggle-row">
+        <span>Show on all sites</span>
+        <label class="switch">
+          <input type="checkbox" id="everywhere-toggle">
+          <span class="slider"></span>
+        </label>
+      </label>
+      <p class="hint" id="sites-hint">Or limit to specific sites below.</p>
+      <div id="sites-section">
+        <ul id="site-list" class="site-list"></ul>
+        <div class="add-site-row">
+          <input type="text" id="new-site" placeholder="example.com" />
+          <button id="add-site-btn">Add</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Breathing pattern</h2>
+      <label>
+        Pattern
+        <select id="pattern-select">
+          <option value="box_4_4_4_4">Box (4-4-4-4) — inhale, hold, exhale, hold</option>
+          <option value="coherent_5_5">Coherent (5-5) — inhale, exhale</option>
+        </select>
+      </label>
+    </section>
+
+    <section>
+      <h2>Audio</h2>
+      <label>
+        Sound
+        <select id="audio-mode-select">
+          <option value="silent">Silent</option>
+          <option value="chime">Chime</option>
+          <option value="music">Ambient music</option>
+          <option value="voice_calm">Calm voice</option>
+          <option value="voice_hype">Hype voice</option>
+          <option value="voice_savage" data-premium="true">Savage voice (Premium)</option>
+          <option value="voice_custom" data-premium="true">Custom voice (Premium)</option>
+        </select>
+      </label>
+      <label id="music-track-row" class="hidden">
+        Music track
+        <select id="music-track-select">
+          <option value="lofi_rain">Lo-fi rain</option>
+          <option value="forest">Forest</option>
+          <option value="tibetan_bowl">Tibetan bowl</option>
+        </select>
+      </label>
+      <div id="custom-voice-row" class="hidden">
+        <label style="margin-top:10px;">
+          Intro audio URL <span style="font-size:11px;color:#888;">(webm/mp3)</span>
+          <input type="url" id="custom-intro-url" placeholder="https://…" />
+        </label>
+        <label style="margin-top:8px;">
+          Outro audio URL <span style="font-size:11px;color:#888;">(webm/mp3)</span>
+          <input type="url" id="custom-outro-url" placeholder="https://…" />
+        </label>
+      </div>
+    </section>
+
+    <section>
+      <h2>Theme</h2>
+      <label>
+        <select id="theme-select">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="sepia">Sepia</option>
+          <option value="forest">Forest</option>
+        </select>
+      </label>
+    </section>
+
+    <section>
+      <h2>Character</h2>
+      <p class="hint">Complete sessions to unlock new companions.</p>
+      <div id="character-grid" class="character-grid"></div>
+    </section>
+
+    <section id="premium-section">
+      <h2>Unlock Premium</h2>
+      <div id="premium-status"></div>
+      <p class="hint" id="premium-hint">Unlock all companions, savage voice, custom voice lines, and body-double mode.</p>
+      <div class="license-row" id="license-row">
+        <input type="text" id="license-key" placeholder="BB-XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false"/>
+        <button id="apply-license-btn" class="btn-primary">Apply</button>
+      </div>
+      <div id="license-msg" class="saved-msg"></div>
+      <button id="buy-btn" class="btn-secondary-sm" style="margin-top:8px;">Get a license key →</button>
+    </section>
+
+    <section>
+      <h2>Your history</h2>
+      <div id="mood-chart" class="mood-chart"></div>
+      <p class="hint" id="mood-summary"></p>
+    </section>
+
+    <section>
+      <h2>Mascot name <span style="font-size:11px;font-weight:400;color:#888;">(optional)</span></h2>
+      <label>
+        Nickname for your companion
+        <input type="text" id="mascot-name" placeholder="e.g. Luna" maxlength="20" style="max-width:200px;"/>
+      </label>
+    </section>
+
+    <section>
+      <h2>Focus mode <span style="font-size:11px;font-weight:400;color:#888;">(Premium)</span></h2>
+      <p class="hint">A tiny mascot lives in the corner during a 25/5 Pomodoro block and triggers a breath break at each rest.</p>
+      <label class="toggle-row">
+        <span>Enable body-double mode</span>
+        <label class="switch">
+          <input type="checkbox" id="buddy-toggle">
+          <span class="slider"></span>
+        </label>
+      </label>
+    </section>
+
+    <section>
+      <h2>Accessibility</h2>
+      <label>
+        Reduced motion
+        <select id="reduced-motion-select">
+          <option value="auto">Match system preference</option>
+          <option value="on">Always reduce motion</option>
+          <option value="off">Never reduce motion</option>
+        </select>
+      </label>
+    </section>
+
+    <section>
+      <h2>Language</h2>
+      <label>
+        <select id="locale-select">
+          <option value="en-US">English</option>
+          <option value="hi-IN">हिन्दी (Hindi)</option>
+          <option value="es-ES">Español (Spanish)</option>
+          <option value="pt-BR">Português (Portuguese)</option>
+        </select>
+      </label>
+    </section>
+
+    <footer class="footer">
+      <button id="save-btn" class="btn-primary">Save settings</button>
+      <div class="saved-msg" id="saved-msg"></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:4px;">
+        <button id="export-btn" class="btn-secondary-sm">Export data</button>
+        <button id="clear-btn" class="btn-danger-sm">Clear all data</button>
+        <a href="../privacy/privacy.html" target="_blank" class="crisis-link">Privacy policy</a>
+      </div>
+      <a href="https://988lifeline.org" target="_blank" rel="noopener" class="crisis-link">Need real support? Tap here.</a>
+    </footer>
+  </div>
+  <script type="module" src="options.ts"></script>
+</body>
+</html>

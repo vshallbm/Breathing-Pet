@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breath Break</title>
+  <script type="module" crossorigin src="/assets/popup.html-02CLNXDC.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="/assets/en-oLcRsJ_t.js">
+  <link rel="modulepreload" crossorigin href="/assets/index-DHe6sgQl.js">
+  <link rel="modulepreload" crossorigin href="/assets/emojis-D29lI7Nk.js">
+  <link rel="stylesheet" crossorigin href="/assets/popup-ToCfMfUh.css">
+</head>
+<body>
+  <div class="header">
+    <span class="logo" id="logo">🐱</span>
+    <div class="header-text">
+      <h1>Breath Break</h1>
+      <div class="streak-row">
+        <span class="streak-badge" id="streak-badge" aria-label="Sessions today"></span>
+        <span class="next-break" id="next-break"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="status" id="status-text" aria-live="polite">Loading…</div>
+
+  <div class="toggle-row">
+    <span class="toggle-label" id="toggle-label">Enable</span>
+    <label class="switch" aria-label="Toggle Breath Break">
+      <input type="checkbox" id="enabled-toggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="snooze-row">
+    <button class="btn" data-snooze="30">Pause 30 min</button>
+    <button class="btn" data-snooze="120">Pause 2 hours</button>
+    <button class="btn" data-snooze="today">Pause today</button>
+  </div>
+
+  <div class="footer">
+    <a href="#" id="options-link">Settings</a>
+  </div>
+
+</body>
+</html>

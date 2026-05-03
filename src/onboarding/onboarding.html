@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Breath Break</title>
+  <link rel="stylesheet" href="onboarding.css">
+</head>
+<body>
+
+  <!-- Screen 0: Welcome + demo -->
+  <div id="screen-demo" class="screen active">
+    <div class="logo-row">🐱</div>
+    <h1>Meet Breath Break</h1>
+    <p>One minute. A gentle breathing reset right when you need it.<br>Watch what it feels like.</p>
+
+    <div class="demo-wrap">
+      <svg class="demo-aura-svg" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+        <circle class="demo-aura" cx="80" cy="80" r="62"/>
+      </svg>
+      <div class="demo-mascot" id="demo-mascot"></div>
+    </div>
+
+    <div class="demo-phase" id="demo-phase">Get ready…</div>
+
+    <div class="demo-progress">
+      <div class="demo-progress-fill" id="demo-progress-fill"></div>
+    </div>
+
+    <button class="btn btn-secondary" id="skip-demo-btn" style="font-size:13px;padding:8px 20px;">Skip demo</button>
+  </div>
+
+  <!-- Screen 1: Permission pitch -->
+  <div id="screen-pitch" class="screen">
+    <div class="logo-row">✅</div>
+    <h2>Want this on the sites where you actually scroll?</h2>
+    <p>Breath Break shows up automatically on the sites that pull you in — Instagram, YouTube, Reddit, and more.</p>
+    <p style="font-size:13px;color:#888;">No data leaves your device. Ever.</p>
+    <button class="btn btn-primary" id="start-quiz-btn">Yes, set it up →</button>
+    <button class="btn btn-secondary" id="skip-quiz-btn">Maybe later</button>
+  </div>
+
+  <!-- Screen 2: Vibe quiz -->
+  <div id="screen-quiz" class="screen">
+    <div class="step-counter" id="step-counter">Question 1 of 3</div>
+    <h2 id="quiz-title">Where do you lose the most time?</h2>
+
+    <!-- Step 1: sites -->
+    <div class="quiz-step active" id="step-sites">
+      <div class="quiz-q">Choose all that apply</div>
+      <div class="quiz-options">
+        <label class="quiz-opt"><input type="checkbox" value="instagram.com,threads.net"> 📸 Instagram / Threads</label>
+        <label class="quiz-opt"><input type="checkbox" value="youtube.com"> 📺 YouTube</label>
+        <label class="quiz-opt"><input type="checkbox" value="tiktok.com"> 🎵 TikTok</label>
+        <label class="quiz-opt"><input type="checkbox" value="twitter.com,x.com"> 🐦 Twitter / X</label>
+        <label class="quiz-opt"><input type="checkbox" value="reddit.com"> 🤗 Reddit</label>
+        <label class="quiz-opt"><input type="checkbox" value="facebook.com"> 👥 Facebook</label>
+        <label class="quiz-opt"><input type="checkbox" value="linkedin.com"> 💼 LinkedIn</label>
+        <label class="quiz-opt"><input type="checkbox" value="news.ycombinator.com,lobste.rs"> 💻 Hacker News / Lobsters</label>
+      </div>
+    </div>
+
+    <!-- Step 2: when + ramp -->
+    <div class="quiz-step" id="step-freq">
+      <div class="quiz-q">When do you scroll most?</div>
+      <div class="quiz-options">
+        <label class="quiz-opt"><input type="radio" name="freq" value="morning"> ☀️ Morning — before the day starts</label>
+        <label class="quiz-opt"><input type="radio" name="freq" value="workday" checked> 💻 Workday — while I should be focused</label>
+        <label class="quiz-opt"><input type="radio" name="freq" value="evening"> 🌇 Evening — wind-down hours</label>
+        <label class="quiz-opt"><input type="radio" name="freq" value="latenight"> 🌙 Late night — shouldn't be on my phone</label>
+      </div>
+      <div class="quiz-q" style="margin-top:14px;">How fast should I ramp up?</div>
+      <div class="quiz-options">
+        <label class="quiz-opt"><input type="radio" name="ramp" value="slow"> 🌱 Take it slow</label>
+        <label class="quiz-opt"><input type="radio" name="ramp" value="adaptive" checked> 🌊 Adapt to me</label>
+        <label class="quiz-opt"><input type="radio" name="ramp" value="ready"> ⚡️ I'm ready</label>
+      </div>
+    </div>
+
+    <!-- Step 3: audio -->
+    <div class="quiz-step" id="step-audio">
+      <div class="quiz-q">What helps you reset?</div>
+      <div class="quiz-options">
+        <label class="quiz-opt"><input type="radio" name="audio" value="silent" checked> 🤫 Silence — just visuals</label>
+        <label class="quiz-opt"><input type="radio" name="audio" value="music"> 🎵 Soft ambient music</label>
+        <label class="quiz-opt"><input type="radio" name="audio" value="voice_calm"> 🗣️ Calm, gentle voice</label>
+        <label class="quiz-opt"><input type="radio" name="audio" value="voice_hype"> ⚡️ Hype voice — motivate me</label>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button class="btn btn-secondary" id="quiz-back-btn" style="display:none">← Back</button>
+      <button class="btn btn-primary" id="quiz-next-btn">Next →</button>
+    </div>
+  </div>
+
+  <!-- Screen 3: Done -->
+  <div id="screen-done" class="screen">
+    <div class="logo-row">🎉</div>
+    <h2>You're all set!</h2>
+    <p>Breath Break will gently interrupt you the next time you open a distracting tab.</p>
+    <p style="font-size:13px;color:#888;">You can always change everything in Settings.</p>
+    <button class="btn btn-primary" id="open-settings-btn">Open Settings</button>
+    <button class="btn btn-secondary" id="close-btn">Close</button>
+  </div>
+
+  <script type="module" src="onboarding.ts"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breath Break</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="card">
+    <div class="blob blob-1" aria-hidden="true"></div>
+    <div class="blob blob-2" aria-hidden="true"></div>
+
+    <!-- Header: mascot in breathing ring + greeting -->
+    <div class="header">
+      <div class="mascot-wrap">
+        <svg class="ring" viewBox="0 0 64 64" aria-hidden="true">
+          <circle class="ring-track" cx="32" cy="32" r="29"/>
+          <circle class="ring-progress" cx="32" cy="32" r="29" id="ring-progress"/>
+        </svg>
+        <div class="mascot-art" id="mascot-art" aria-hidden="true">
+          <!-- Default illustrated cat -->
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="24" cy="44" rx="14" ry="2" fill="rgba(0,0,0,0.08)"/>
+            <ellipse cx="14" cy="14" rx="6" ry="7.5" fill="#FFB58A"/>
+            <ellipse cx="34" cy="14" rx="6" ry="7.5" fill="#FFB58A"/>
+            <ellipse cx="14" cy="14" rx="3" ry="4.5" fill="#FFC9D9"/>
+            <ellipse cx="34" cy="14" rx="3" ry="4.5" fill="#FFC9D9"/>
+            <circle cx="24" cy="26" r="14" fill="#FFB58A"/>
+            <circle cx="17" cy="28" r="2.2" fill="#FF6FA8" opacity="0.55"/>
+            <circle cx="31" cy="28" r="2.2" fill="#FF6FA8" opacity="0.55"/>
+            <line x1="18" y1="24" x2="22" y2="24" stroke="#0F0F1E" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="26" y1="24" x2="30" y2="24" stroke="#0F0F1E" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M22 30 Q24 32 26 30" stroke="#0F0F1E" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="mascot-emoji" id="logo" aria-hidden="true" hidden></span>
+      </div>
+      <div class="greeting">
+        <h1 id="greeting-title">u're doing great</h1>
+        <p class="next-break" id="next-break">next breath soon</p>
+      </div>
+    </div>
+
+    <!-- Today's vibes: 5 breath dots -->
+    <div class="vibes">
+      <span class="vibes-label">today's vibes</span>
+      <div class="dots" id="streak-dots" aria-label="Sessions today">
+        <span class="dot" data-i="0"></span>
+        <span class="dot" data-i="1"></span>
+        <span class="dot" data-i="2"></span>
+        <span class="dot" data-i="3"></span>
+        <span class="dot" data-i="4"></span>
+      </div>
+      <span class="streak-badge" id="streak-badge"></span>
+    </div>
+
+    <!-- Status capsule wraps the toggle -->
+    <label class="capsule" data-state="on">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span class="capsule-text">
+        <span class="capsule-title" id="toggle-label">on</span>
+        <span class="capsule-sub" id="status-text">tap to chill it</span>
+      </span>
+      <span class="switch" aria-label="Toggle Breath Break">
+        <input type="checkbox" id="enabled-toggle">
+        <span class="slider"></span>
+      </span>
+    </label>
+
+    <!-- Snooze chips with vibe sublabels -->
+    <div class="chips">
+      <button class="chip" data-snooze="30" type="button">
+        <span class="chip-title">30m</span>
+        <span class="chip-sub">lol brb</span>
+      </button>
+      <button class="chip" data-snooze="120" type="button">
+        <span class="chip-title">2h</span>
+        <span class="chip-sub">deep work</span>
+      </button>
+      <button class="chip" data-snooze="today" type="button">
+        <span class="chip-title">today</span>
+        <span class="chip-sub">not today</span>
+      </button>
+    </div>
+
+    <!-- Footer: character switcher + settings dots -->
+    <div class="footer">
+      <button class="footer-chip" id="character-switcher" type="button">
+        <span class="mini-mascot" aria-hidden="true">🐱</span>
+        <span>switch vibe</span>
+      </button>
+      <a class="footer-dots" href="#" id="options-link" aria-label="Settings">•••</a>
+    </div>
+  </div>
+
+  <script type="module" src="popup.ts"></script>
+</body>
+</html>

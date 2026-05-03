@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breath Break — Privacy</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f9f9fb; color: #1a1a2e; padding: 40px 24px; }
+    .container { max-width: 640px; margin: 0 auto; }
+    h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+    .subtitle { color: #666; font-size: 14px; margin-bottom: 36px; }
+    h2 { font-size: 17px; font-weight: 600; margin: 28px 0 8px; }
+    p, li { font-size: 14px; line-height: 1.7; color: #333; }
+    ul { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+    .badge {
+      display: inline-block; background: #e8f5e9; color: #2e7d32;
+      font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .section { background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    code { background: #f0f0f8; padding: 1px 6px; border-radius: 4px; font-size: 12px; font-family: 'SF Mono', monospace; }
+    footer { margin-top: 40px; font-size: 12px; color: #999; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">Last updated: May 2026</p>
+    <div class="badge">🔒 No telemetry. No accounts. No servers.</div>
+
+    <div class="section">
+      <h2>What data Breath Break collects</h2>
+      <p>Breath Break collects <strong>nothing from you</strong> and sends nothing to any server — not now, not in any paid tier.</p>
+      <ul>
+        <li>Your <strong>settings</strong> (breathing pattern, interval, audio mode, theme, target sites) are stored in <code>chrome.storage.sync</code> — synced across your own Chrome devices by Google's infrastructure, invisible to us.</li>
+        <li>Your <strong>mood check-ins</strong> and <strong>session streak</strong> are stored in <code>chrome.storage.local</code> — local to this device only. We cannot read them. Google cannot read them.</li>
+        <li>We do <strong>not</strong> collect: browsing history, page content, keystrokes, identifiers, IP addresses, or any analytics events.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Network requests</h2>
+      <p>Breath Break makes <strong>zero outbound network requests</strong> in all tiers through Phase 4 of development. The only network activity is:</p>
+      <ul>
+        <li>Audio files (chime, music, voice clips) loaded from the extension bundle itself — no CDN, no remote server.</li>
+        <li>The crisis-support link in Settings footer opens a third-party website in your browser when you click it. That navigation is subject to that site's own privacy policy.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Permissions explained</h2>
+      <ul>
+        <li><code>storage</code> — save your settings and streak locally.</li>
+        <li><code>alarms</code> — schedule when the next breath break should appear.</li>
+        <li><code>tabs</code> + <code>activeTab</code> — detect which site is active to decide whether to show the overlay.</li>
+        <li><code>scripting</code> — lower the volume of background music on Spotify / YouTube tabs during a session (optional, only when audio is enabled).</li>
+      </ul>
+      <p style="margin-top:10px;">We do not use these permissions to read page content or track your browsing.</p>
+    </div>
+
+    <div class="section">
+      <h2>Exporting your data</h2>
+      <p>You can download a full JSON copy of all your stored data at any time from the Settings page → <strong>Export data</strong>. The file includes your settings, mood history, and session streak. Nothing is held back.</p>
+    </div>
+
+    <div class="section">
+      <h2>Deleting your data</h2>
+      <p>Uninstalling Breath Break from Chrome removes all <code>chrome.storage.local</code> data automatically. To also clear synced settings, open Settings → scroll to the footer → <strong>Clear all data</strong> before uninstalling.</p>
+    </div>
+
+    <div class="section">
+      <h2>Children</h2>
+      <p>Breath Break does not knowingly collect data from anyone. Since no data is collected at all, there is nothing age-specific to disclose.</p>
+    </div>
+
+    <div class="section">
+      <h2>Changes to this policy</h2>
+      <p>If we ever add network features (e.g. live TTS in a future version), this policy will be updated and the extension changelog will note it explicitly. We will not add telemetry silently.</p>
+    </div>
+
+    <footer>
+      Breath Break is made with care. Questions? <a href="mailto:hello@breathbreak.app">hello@breathbreak.app</a>
+    </footer>
+  </div>
+</body>
+</html>
