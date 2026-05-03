@@ -29,10 +29,12 @@ function getOrCreateOverlay(): HTMLElement {
   return overlayEl;
 }
 
-chrome.runtime.onMessage.addListener((msg) => {
+chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (msg.type === 'SHOW_OVERLAY') {
     const overlay = getOrCreateOverlay() as unknown as { show: () => Promise<void> };
     overlay.show().catch(() => undefined);
+    sendResponse({});
+    return true;
   }
   if (msg.type === 'HIDE_OVERLAY') {
     const overlay = overlayEl as unknown as { hide: () => void } | null;

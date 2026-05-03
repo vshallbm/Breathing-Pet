@@ -52,7 +52,7 @@ export async function handleAlarmFired(): Promise<void> {
 }
 
 async function notifyActiveTabOnTargetSite(targetSites: string[], everywhereMode: boolean): Promise<void> {
-  const [activeTab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  const [activeTab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
   if (!activeTab?.id || !activeTab.url) return;
 
   if (!isInjectableUrl(activeTab.url)) {

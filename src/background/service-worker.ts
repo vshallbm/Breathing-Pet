@@ -2,6 +2,7 @@ import { initScheduler, handleAlarmFired, snooze, cancelSnooze } from './schedul
 import { initDigestAlarm, sendWeeklyDigest } from './digest';
 import { initNotificationListeners } from './notifications';
 import { getSettings, saveSettings, recordDismissal } from '../lib/storage';
+import { triggerBreakOnActiveTab } from './trigger-break';
 import { duckTabs, restoreTabs } from '../audio/ducker';
 import { shouldUnlockDog, checkMilestone } from '../characters/unlocks';
 import { applySeasonalDrops } from '../characters/seasonal';
@@ -160,6 +161,10 @@ chrome.runtime.onMessage.addListener((msg: MessageType, _sender, sendResponse) =
       case 'OPEN_CHECKOUT': {
         openCheckout();
         sendResponse({ ok: true });
+        break;
+      }
+      case 'TRIGGER_BREAK': {
+        sendResponse(await triggerBreakOnActiveTab());
         break;
       }
       case 'SETTINGS_UPDATED': {

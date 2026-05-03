@@ -74,6 +74,7 @@ export const DEFAULT_SETTINGS: Settings = {
 export type MessageType =
   | { type: 'SHOW_OVERLAY' }
   | { type: 'HIDE_OVERLAY' }
+  | { type: 'TRIGGER_BREAK' }
   | { type: 'SESSION_COMPLETE' }
   | { type: 'SESSION_DISMISSED' }
   | { type: 'SNOOZE'; minutes: number }

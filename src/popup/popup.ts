@@ -214,6 +214,31 @@ async function init() {
     });
   });
 
+  const breatheBtn = document.getElementById('breathe-now-btn');
+  let statusResetTimer: ReturnType<typeof setTimeout> | null = null;
+  breatheBtn?.addEventListener('click', async () => {
+    breatheBtn.setAttribute('disabled', '');
+    let ok = false;
+    try {
+      const res = await chrome.runtime.sendMessage({ type: 'TRIGGER_BREAK' }) as { ok: boolean } | undefined;
+      ok = res?.ok === true;
+    } catch {
+      // SW inactive or port closed mid-flight
+    }
+    if (ok) {
+      window.close();
+    } else {
+      breatheBtn.removeAttribute('disabled');
+      const originalText = statusText.textContent;
+      if (statusResetTimer !== null) clearTimeout(statusResetTimer);
+      statusText.textContent = 'open a webpage first 🐱';
+      statusResetTimer = setTimeout(() => {
+        statusText.textContent = originalText;
+        statusResetTimer = null;
+      }, 2500);
+    }
+  });
+
   document.getElementById('character-switcher')?.addEventListener('click', () => {
     chrome.runtime.openOptionsPage();
   });
