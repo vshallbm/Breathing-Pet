@@ -45,6 +45,7 @@ const manifest = defineManifest({
       resources: [
         'src/onboarding/onboarding.html',
         'src/privacy/privacy.html',
+        'src/breathing/breathing.html',
         'src/assets/icons/icon-48.png',
       ],
       matches: ['<all_urls>'],
@@ -62,6 +63,7 @@ export default defineConfig({
       input: {
         onboarding: 'src/onboarding/onboarding.html',
         privacy: 'src/privacy/privacy.html',
+        breathing: 'src/breathing/breathing.html',
       },
     },
   },

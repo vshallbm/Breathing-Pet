@@ -1,5 +1,9 @@
 import { isDenyListedHost, isDenyListedPath } from '../data/deny-list';
 
+export function isInjectableUrl(url: string): boolean {
+  return url.startsWith('http:') || url.startsWith('https:');
+}
+
 export function isFullscreen(): boolean {
   return !!(document.fullscreenElement || (document as unknown as { webkitFullscreenElement: Element | null }).webkitFullscreenElement);
 }

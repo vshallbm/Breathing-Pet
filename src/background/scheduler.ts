@@ -1,6 +1,8 @@
 import { getSettings, saveSettings } from '../lib/storage';
 import { getRampIntervalMinutes, getDailyLimit } from './ramp';
 import { getAdaptiveFactor, applyAdaptiveFactor } from './adaptive';
+import { isInjectableUrl } from '../lib/guards';
+import { notifyViaNotification } from './notifications';
 
 const ALARM_NAME = 'breath-break-tick';
 
@@ -52,6 +54,12 @@ export async function handleAlarmFired(): Promise<void> {
 async function notifyActiveTabOnTargetSite(targetSites: string[], everywhereMode: boolean): Promise<void> {
   const [activeTab] = await chrome.tabs.query({ active: true, currentWindow: true });
   if (!activeTab?.id || !activeTab.url) return;
+
+  if (!isInjectableUrl(activeTab.url)) {
+    if (everywhereMode) notifyViaNotification();
+    return;
+  }
+
   try {
     const url = new URL(activeTab.url);
     if (!everywhereMode) {
@@ -61,7 +69,7 @@ async function notifyActiveTabOnTargetSite(targetSites: string[], everywhereMode
     }
     await chrome.tabs.sendMessage(activeTab.id, { type: 'SHOW_OVERLAY' });
   } catch {
-    // tab not injectable
+    // tab not injectable (defensive net for edge cases)
   }
 }
 

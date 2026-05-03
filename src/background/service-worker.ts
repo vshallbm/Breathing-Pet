@@ -1,5 +1,6 @@
 import { initScheduler, handleAlarmFired, snooze, cancelSnooze } from './scheduler';
 import { initDigestAlarm, sendWeeklyDigest } from './digest';
+import { initNotificationListeners } from './notifications';
 import { getSettings, saveSettings, recordDismissal } from '../lib/storage';
 import { duckTabs, restoreTabs } from '../audio/ducker';
 import { shouldUnlockDog, checkMilestone } from '../characters/unlocks';
@@ -7,6 +8,8 @@ import { applySeasonalDrops } from '../characters/seasonal';
 import { applyLicenseKey, allUnlockedForTier, openCheckout } from '../premium/subscription';
 import { CHARACTER_REGISTRY } from '../characters/registry';
 import type { MessageType } from '../types';
+
+initNotificationListeners();
 
 chrome.runtime.onInstalled.addListener(async (details) => {
   if (details.reason === 'install') {

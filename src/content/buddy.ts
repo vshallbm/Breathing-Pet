@@ -60,8 +60,18 @@ function startPomodoroClock(timerEl: HTMLElement): void {
     workSecondsLeft--;
     if (workSecondsLeft <= 0) {
       if (!isBreak) {
-        // Work block done → trigger a breath break
-        chrome.runtime.sendMessage({ type: 'SHOW_OVERLAY' }).catch(() => undefined);
+        // Work block done → trigger a breath break directly on this page's overlay element
+        // (routing through the SW active-tab lookup fails when this tab is not the focused window)
+        let root = document.getElementById('breath-break-root');
+        if (!root) {
+          root = document.createElement('div');
+          root.id = 'breath-break-root';
+          document.body.appendChild(root);
+        }
+        if (!root.querySelector('breath-break-overlay')) {
+          root.appendChild(document.createElement('breath-break-overlay'));
+        }
+        (root.querySelector('breath-break-overlay') as unknown as { show: () => void } | null)?.show();
         isBreak = true;
         workSecondsLeft = BREAK_SECONDS;
         timerEl.style.color = '#4caf50';
