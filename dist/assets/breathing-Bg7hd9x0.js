@@ -1,0 +1,1 @@
+import"./modulepreload-polyfill-B5Qt9EMX.js";import"./overlay-BTFL-HOv.js";import"./index-DHe6sgQl.js";import"./en-oLcRsJ_t.js";import"./mascots-BW4AumQQ.js";import"./guards-BqOcUQ3q.js";document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("loading"),t=document.querySelector("breath-break-overlay");t&&(e==null||e.remove(),t.show().catch(()=>{}))});

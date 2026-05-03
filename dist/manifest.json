@@ -15,7 +15,7 @@
   "content_scripts": [
     {
       "js": [
-        "assets/index.ts-loader-Cv2xuQhT.js"
+        "assets/index.ts-loader-DSDCAppM.js"
       ],
       "matches": [
         "<all_urls>"
@@ -52,12 +52,15 @@
       "resources": [
         "src/onboarding/onboarding.html",
         "src/privacy/privacy.html",
+        "src/breathing/breathing.html",
         "src/assets/icons/icon-48.png",
-        "assets/index-DHe6sgQl.js",
+        "assets/overlay-BTFL-HOv.js",
         "assets/mascots-BW4AumQQ.js",
         "assets/storage-76M7Q688.js",
+        "assets/index-DHe6sgQl.js",
         "assets/en-oLcRsJ_t.js",
-        "assets/index.ts-BnGQNYGp.js"
+        "assets/guards-BqOcUQ3q.js",
+        "assets/index.ts-H38DGctk.js"
       ],
       "use_dynamic_url": false
     }
